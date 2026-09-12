@@ -279,6 +279,82 @@ img {
     font-weight: 800
 }
 
+.gallery-section {
+    padding-top: 30px
+}
+
+.bv-carousel {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+    margin-top: 8px
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid #2b2b2b;
+    background: #080808;
+    box-shadow: 0 22px 48px rgba(0, 0, 0, .35)
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform .45s ease
+}
+
+.carousel-slide {
+    min-width: 100%;
+    margin: 0
+}
+
+.carousel-slide img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+}
+
+.carousel-control {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #454545;
+    background: linear-gradient(145deg, #171717, #0b0b0b);
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform .2s, border-color .2s
+}
+
+.carousel-control:hover {
+    transform: translateY(-1px);
+    border-color: #ff4a51
+}
+
+.carousel-dots {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 10px
+}
+
+.carousel-dots button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #686868;
+    background: #181818;
+    cursor: pointer;
+    padding: 0
+}
+
+.carousel-dots button.is-active {
+    background: var(--red);
+    border-color: var(--red)
+}
+
 .split-section {
     background: #0d0d0d;
     border-block: 1px solid #1d1d1d
@@ -454,6 +530,29 @@ img {
 
     .cards {
         grid-template-columns: 1fr
+    }
+
+    .bv-carousel {
+        grid-template-columns: 1fr;
+        gap: 10px
+    }
+
+    .carousel-control {
+        width: 100%;
+        border-radius: 10px;
+        height: 40px
+    }
+
+    .carousel-control.prev {
+        order: 2
+    }
+
+    .carousel-viewport {
+        order: 1
+    }
+
+    .carousel-control.next {
+        order: 3
     }
 
     .footer-grid {
