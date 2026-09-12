@@ -52,15 +52,13 @@ clean:
 # Validate HTML for image references and update them to .webp format
 validate-html: index.html
 	$(call header, Validating HTML for image references...)
-	@sed -i '' -E 's/(src="[^"]+)\.(jpg|jpeg|png)"/\1.webp"/g' index.html
+	@perl -i -pe 's#(src="/?assets/img/[^"]+)\.(?:jpg|jpeg|png)"#$$1.webp"#g' index.html
 	@echo "HTML validation complete. All image references updated to .webp format."
 	$(call msg, HTML validation completed successfully.)
 
 	$(call header, Validating HTML for css and js references that are not already minified...)
-	@sed -i '' -E 's/(href="[^"]+)\.min.css"/\1.css"/g' index.html
-	@sed -i '' -E 's/(src="[^"]+)\.min.js"/\1.js"/g' index.html
-	@sed -i '' -E 's/(href="[^"]+)\.css"/\1.min.css"/g' index.html
-	@sed -i '' -E 's/(src="[^"]+)\.js"/\1.min.js"/g' index.html
+	@perl -i -pe 's#(href="/?assets/css/[^"]*?)(?<!\.min)\.css"#$$1.min.css"#g' index.html
+	@perl -i -pe 's#(src="/?assets/js/[^"]*?)(?<!\.min)\.js"#$$1.min.js"#g' index.html
 	@echo "HTML validation complete. All CSS and JS references updated to .min.css and .min.js format."
 	$(call msg, HTML validation completed successfully.)
 
