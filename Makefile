@@ -12,8 +12,8 @@ build: minify optimize-images validate-html
 # Minify CSS and JS files
 minify:
 	$(call header, Minifying CSS and JS files...)
-	npx minify assets/css/styles.css > assets/css/styles.min.css
-	npx minify assets/js/script.js > assets/js/script.min.js
+	npx --yes minify assets/css/styles.css > assets/css/styles.min.css
+	npx --yes minify assets/js/script.js > assets/js/script.min.js
 	$(call msg, CSS and JS files minified successfully.)
 
 
@@ -32,13 +32,13 @@ optimize-images: $(TARGETS)
 	$(call msg, Images optimized to WebP format successfully.)
 
 %.webp: %.jpg
-	npx cwebp-cli $< -o $@ -q 80
+	npx --yes cwebp-cli $< -o $@ -q 80
 
 %.webp: %.jpeg
-	npx cwebp-cli $< -o $@ -q 80
+	npx --yes cwebp-cli $< -o $@ -q 80
 
 %.webp: %.png
-	npx cwebp-cli $< -o $@ -q 80
+	npx --yes cwebp-cli $< -o $@ -q 80
 
 # Clean target to clear generated webp files if needed
 clean:
