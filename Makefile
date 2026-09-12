@@ -56,6 +56,13 @@ validate-html: index.html
 	@echo "HTML validation complete. All image references updated to .webp format."
 	$(call msg, HTML validation completed successfully.)
 
+	$(call header, Validating HTML for css and js references that are not already minified...)
+	@sed -i '' -E 's/(href="[^"]+)\.min.css"/\1.css"/g' index.html
+	@sed -i '' -E 's/(src="[^"]+)\.min.js"/\1.js"/g' index.html
+	@sed -i '' -E 's/(href="[^"]+)\.css"/\1.min.css"/g' index.html
+	@sed -i '' -E 's/(src="[^"]+)\.js"/\1.min.js"/g' index.html
+	@echo "HTML validation complete. All CSS and JS references updated to .min.css and .min.js format."
+	$(call msg, HTML validation completed successfully.)
 
 
 define msg
