@@ -21,3 +21,4 @@ jobs:
             cd /var/www/bv-automotive
             git fetch origin
             git reset --hard origin/main
+            make build
